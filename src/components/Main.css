@@ -1,0 +1,62 @@
+main {
+    margin: 15px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+}
+
+input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 15px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.shakeInput {
+    animation: shake .2s ease-in-out 0s 2;
+}
+
+input::placeholder {
+    color: whitesmoke;
+    opacity: 0.5;
+}
+
+.buttonContainer {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    margin-left: 7px;
+    overflow: hidden;
+    max-width: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.activeButton {
+    max-width: 50px;
+}
+
+
+@keyframes shake {
+    0% { margin-left: 0rem; }
+    25% { margin-left: 0.5rem; }
+    75% { margin-left: -0.5rem; }
+    100% { margin-left: 0rem; }
+  }
