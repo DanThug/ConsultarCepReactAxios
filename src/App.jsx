@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { BiSearch } from 'react-icons/bi';
 import api from './services/api';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -60,6 +62,7 @@ function App() {
     if (response.message || response.erro) {
       setAlertMessageClass('activeMessage');
       setAddressContainerClass('');
+      setAddressData('');
       return;
     }
 
@@ -75,45 +78,20 @@ function App() {
   
   return (
     <div className='App'>
-      <header>
-        <div className='title'>
-          <h1>{ data.cep || 'Consultar CEP' }</h1>
-        </div>
-      </header>
+      <Header children={ data.cep } />
 
-      <main>
-        <div className='container'>
-          <div className={ `inputContainer ${ inputShakeClass }` }>
-            <input
-              type='text'
-              maxLength='8'
-              onChange={ updateValue }
-              onKeyUp={ toggleButtonClass }
-              value={ inputValue }
-              placeholder='Digite o cep...' />
-          </div>
+      <Main
+        shake={ inputShakeClass }
+        button={ btnContainerClass }
+        update={ updateValue }
+        value={ inputValue }
+        toggle={ toggleButtonClass }
+        checkInput={ checkInputLength } />
 
-          <div className={ `buttonContainer ${ btnContainerClass }` }>
-            <button onClick={ checkInputLength }>
-              <BiSearch size={ 25 }  color='white' />
-            </button>
-          </div>
-
-          
-        </div>
-      </main>
-
-      <footer>
-        <div className={`alertMessage ${ alertMessageClass }`}>
-          <span>Falha ao consultar o CEP informado!</span>
-        </div>
-        <div className={`addressContainer ${ addressContainerClass }`}>
-          <span>{ data.logradouro }</span>
-          <span>{ data.bairro }</span>
-          <span>{ data.localidade }</span>
-          <span>{ data.estado }</span>
-        </div>
-      </footer>
+      <Footer
+        data={ data }
+        alert={ alertMessageClass }
+        address={ addressContainerClass } />
     </div>
   )
 }
