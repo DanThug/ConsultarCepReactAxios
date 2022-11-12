@@ -5,6 +5,7 @@
     align-items: center;
     flex-direction: column;
     background-color: darkslategray;
+    background: linear-gradient(rgb(19, 32, 32), darkslategray);
     font-family: sans-serif; 
     color: whitesmoke; 
 }

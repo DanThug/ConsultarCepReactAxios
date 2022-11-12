@@ -1,4 +1,31 @@
+:root {
+    --gradient: linear-gradient(
+        45deg,
+        rgba(255,255,255,1),
+        rgba(233,208,14,1),
+        rgba(250,201,50,1),
+        rgba(233,208,14,1),
+        rgba(255,255,255,1),
+        rgba(233,208,14,1),
+        rgba(250,201,50,1)
+    );
+}
+
 h1 {
-    font-size: 50px;
-    text-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
+    font-size: 10vw;
+    background: rgb(255,255,255);
+    background: var(--gradient);
+    background-size: 400%;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        background-position: left;
+    }
+    100% {
+        background-position: right;
+    }
 }

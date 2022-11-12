@@ -5,19 +5,19 @@ const Main = props => {
     return (
         <main>
             <div className='container'>
-                <div className={ `inputContainer ${ props.shake }` }>
+                <div className={ `inputContainer ${ props.inputShakeClass }` }>
                     <input
                         type='text'
                         maxLength='8'
-                        value={ props.value }
-                        onChange={ props.toggle }
-                        onKeyUp={ props.update }
+                        onInput={ e => props.showOrHideButton(props.getOnlyNumbers(e.target.value)) }
+                        onChange={ e => props.setInputValue(props.getOnlyNumbers(e.target.value)) }
+                        value={ props.inputValue }
                         placeholder='Digite o cep...' />
                 </div>
 
-                <div className={ `buttonContainer ${ props.button }` }>
-                    <button onClick={ props.checkInput }>
-                        <BiSearch size={ 25 }  color='white' />
+                <div className={ `buttonContainer ${ props.btnContainerClass }` }>
+                    <button onClick={ props.checkInputLength }>
+                        <BiSearch name='SearchButton' size={ 25 }  color='white' />
                     </button>
                 </div>
             </div>

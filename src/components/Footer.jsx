@@ -1,3 +1,4 @@
+import { BiError } from 'react-icons/bi';
 import './Footer.css';
 
 const Footer = props => {
@@ -5,6 +6,7 @@ const Footer = props => {
         <footer>
             <div className={`alertMessage ${ props.alert }`}>
                 <span>Falha ao consultar o CEP informado!</span>
+                <BiError name='Error' size={ 18 } color='white' />
             </div>
             <div className={`addressContainer ${ props.address }`}>
                 <span>{ props.data.logradouro }</span>

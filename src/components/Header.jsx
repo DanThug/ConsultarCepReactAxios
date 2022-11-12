@@ -1,10 +1,10 @@
 import './Header.css';
 
-const Header = ({ children }) => {
+const Header = ({ cep }) => {
     return (
         <header>
             <div className='title'>
-            <h1>{ children || 'Consultar CEP' }</h1>
+            <h1>{ cep || 'Consultar CEP' }</h1>
             </div>
         </header> 
     );

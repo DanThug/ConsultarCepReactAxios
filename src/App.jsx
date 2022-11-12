@@ -13,24 +13,22 @@ function App() {
   const [addressContainerClass, setAddressContainerClass] = useState('');
   const [inputShakeClass, setInputShakeClass] = useState('');
 
-  const updateValue = e => {
-    const newValue = getOnlyNumbers(e.target.value);
-    setInputValue(newValue);
-  };
-
   const getOnlyNumbers = value => value.replace(/\D/g, '');
+
+  const showOrHideButton = value => {
+    const classToSet = value.length > 0 ? 'activeButton' : '';
+
+    return setBtnContainerClass(classToSet);
+  };
 
   const checkInputLength = () => {
     const hasEightDigits = inputValue.length >= 8;
 
     if (hasEightDigits) {
-      getAddressData();
-
-      return;
+      return getAddressData();
     }
 
-    shakeInputAnimation();
-    return;
+    return shakeInputAnimation();
   };
 
   const shakeInputAnimation = () => {
@@ -39,12 +37,6 @@ function App() {
     setTimeout(() => {
       setInputShakeClass('');
     }, 2000);
-  };
-
-  const toggleButtonClass = () => {
-    const isAboveZero = inputValue.length > 0 ? 'activeButton' : '';
-
-    setBtnContainerClass(isAboveZero);
   };
 
   const fetchApi = async () => {
@@ -65,10 +57,12 @@ function App() {
       setAddressData('');
       return;
     }
-
+    
+    setBtnContainerClass('');
     setAddressContainerClass('activeAddress');
     setAlertMessageClass('');
     setAddressData(response);
+    return;
   };
   
   const setAddressData = data => {
@@ -78,15 +72,16 @@ function App() {
   
   return (
     <div className='App'>
-      <Header children={ data.cep } />
+      <Header cep={ data.cep } />
 
       <Main
-        shake={ inputShakeClass }
-        button={ btnContainerClass }
-        update={ updateValue }
-        value={ inputValue }
-        toggle={ toggleButtonClass }
-        checkInput={ checkInputLength } />
+        getOnlyNumbers={ getOnlyNumbers }
+        showOrHideButton={ showOrHideButton }
+        setInputValue={ setInputValue }
+        inputShakeClass={ inputShakeClass }
+        btnContainerClass={ btnContainerClass }
+        inputValue={ inputValue }
+        checkInputLength={ checkInputLength } />
 
       <Footer
         data={ data }
