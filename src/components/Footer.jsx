@@ -11,8 +11,7 @@ const Footer = props => {
             <div className={`addressContainer ${ props.address }`}>
                 <span>{ props.data.logradouro }</span>
                 <span>{ props.data.bairro }</span>
-                <span>{ props.data.localidade }</span>
-                <span>{ props.data.estado }</span>
+                <span>{ props.data.localidade } - { props.data.uf }</span>
             </div>
       </footer>
     );
